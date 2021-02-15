@@ -24,5 +24,15 @@ while (count > 0):
 for i in range(0, 5):
     print(i)
 
+# try catch block
+try:
+    num = input("Enter a number: ")
+    print(num)
+except(KeyboardInterrupt):
+    print("You broke out of the loop!")
 
-
+"""
+print(4 < 5)
+print(10 == 10)
+print(10 != 10)
+print("dog" == "dog")"""
