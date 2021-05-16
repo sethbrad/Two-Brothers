@@ -10,3 +10,11 @@ while (counter >= 0):
 
 
 # Git -> add to stage, commit stage, push
+
+while(True):
+    var = input("Enter a number: ")
+
+    if(int(var) < 0):
+        break
+    else:
+        print("That's above zero")
