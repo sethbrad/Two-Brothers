@@ -9,8 +9,20 @@ class Hero:
         "evasiveness": 5
     }
     playerLevel = 1
-    remainingXP = 50
-    
+    nextLevelXP = 50
+    XP = 0
+
+    inventory = {}
+
+    def playerUpdate(self):
+        if(self.XP > self.nextLevelXP):
+            self.XP = self.XP - self.nextLevelXP
+            self.nextLevelXP = 50*(1.1**(self.playerLevel-1))
+            
+            print("You leveled up!")
+            self.playerLevel += 1
+            self.specialize(1)
+
 
     def specialize(self, points):
         while(points > 0):
@@ -41,3 +53,23 @@ class Hero:
             else:
                 print("Invalid attribute choice.")
         print("No points remaining. Level up successful.")
+
+    def chooseClass(self):
+        print("AVAILABLE CLASSES --> Rogue, Mage, Warrior, Healer")
+
+        choice = input("Enter a class: ")
+
+        if(choice == "rogue"):
+            self.attributes["evasiveness"] += 2
+            self.attributes["stamina"] += 20
+        elif(choice == "mage"):
+            self.attributes["mp"] += 2
+            self.attributes["mana"] += 20
+        elif(choice == "warrior"):
+            self.attributes["strength"] += 2
+            self.attributes["hp"] += 20
+        elif(choice == "healer"):
+            self.attributes["toughness"] += 2
+            self.attributes["mana"] += 20
+        else:
+            print("Invalid class") #TODO also add class name to stats

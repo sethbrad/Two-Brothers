@@ -1,15 +1,18 @@
 import random, enemy
 
 class Forest:
-    def event(self):
+    def event(self, Player):
         turns = 5
         while(turns > 0):
             if(random.random() < 0.2):
-                print("Enemy encounter")
+                print("ENEMY ENCOUNTER")
                 wolf = enemy.Wolf()
-                enemy.enterCombat(wolf)
+                enemy.combatLoop(wolf, Player)
+                Player.playerUpdate()
             else:
                 print("You don't encounter anything.")
+                input("Continue exploring? (enter)")
+                print()
             turns -= 1
 
 class Plains:
@@ -23,7 +26,7 @@ class Wasteland:
 class DragonDen:
     pass
 
-def explore(location):
+def explore(location, Player):
     if(location == "forest"):
         forest = Forest()
-        forest.event()         
+        forest.event(Player)         
