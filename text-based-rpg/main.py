@@ -12,12 +12,13 @@ print()
 ### Game loop
 while(True):        
         
+    print("# # # # # # # #")
     cmd = input("NEW TURN --> Enter your next move: ")
     cmdList = cmd.split()
 
     ### Do stuff
-    if(cmd == "displayStats"):
-        print("You current level is: " + str(Player.playerLevel))
+    if(cmd == "getStats"):
+        print("You are a Level " + str(Player.playerLevel) + " " + Player.playerClass)
         print()
         print("Your current attributes: ")
         print(Player.attributes)
@@ -38,7 +39,7 @@ while(True):
 
     elif(cmd == "help"):
         print("VALID COMMANDS")
-        cmds = {"displayStats", "getInventory", "move --> usage: move + (direction)", "getLocation", "help", "exit"}
+        cmds = {"getStats", "getInventory", "move --> usage: move + (direction)", "getLocation", "help", "exit"}
         for cmd in cmds:
             print(cmd)
 

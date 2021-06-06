@@ -9,10 +9,16 @@ class Hero:
         "evasiveness": 5
     }
     playerLevel = 1
+    playerClass = ""
     nextLevelXP = 50
     XP = 0
 
-    inventory = {}
+    inventory = {
+        "weapons": [],
+        "armor": [],
+        "spells": [],
+        "gold": 0
+    }
 
     def playerUpdate(self):
         if(self.XP > self.nextLevelXP):
@@ -21,37 +27,31 @@ class Hero:
             
             print("You leveled up!")
             self.playerLevel += 1
-            self.specialize(1)
+            self.specialize()
 
 
-    def specialize(self, points):
-        while(points > 0):
-            print(str(points) + " point(s) remaining.")
-            attr = input("Choose an attribute to level up: ")
+    def specialize(self):
+        print("1 point remaining.")
+        attr = input("Choose an attribute to level up: ")
 
-            if(attr == "hp"):
-                self.attributes["hp"] += 10
-                points -= 1
-            elif(attr == "stamina"):
-                self.attributes["stamina"] += 10
-                points -= 1
-            elif(attr == "mana"):
-                self.attributes["mana"] += 10
-                points -= 1
-            elif(attr == "strength"):
-                self.attributes["strength"] += 1
-                points -= 1
-            elif(attr == "toughness"):
-                self.attributes["toughness"] += 1
-                points -= 1
-            elif(attr == "mp"):
-                self.attributes["mp"] += 1
-                points -= 1
-            elif(attr == "evasiveness"):
-                self.attributes["evasiveness"] += 1
-                points -= 1
-            else:
-                print("Invalid attribute choice.")
+        if(attr == "hp"):
+            self.attributes["hp"] += 10
+        elif(attr == "stamina"):
+            self.attributes["stamina"] += 10
+        elif(attr == "mana"):
+            self.attributes["mana"] += 10
+        elif(attr == "strength"):
+            self.attributes["strength"] += 1
+        elif(attr == "toughness"):
+            self.attributes["toughness"] += 1
+        elif(attr == "mp"):
+            self.attributes["mp"] += 1
+        elif(attr == "evasiveness"):
+            self.attributes["evasiveness"] += 1
+        else:
+            print("Invalid attribute choice.")
+            self.specialize()
+            
         print("No points remaining. Level up successful.")
 
     def chooseClass(self):
@@ -62,14 +62,19 @@ class Hero:
         if(choice == "rogue"):
             self.attributes["evasiveness"] += 2
             self.attributes["stamina"] += 20
+            self.playerClass = "Rogue"
         elif(choice == "mage"):
             self.attributes["mp"] += 2
             self.attributes["mana"] += 20
+            self.playerClass = "Mage"
         elif(choice == "warrior"):
             self.attributes["strength"] += 2
             self.attributes["hp"] += 20
+            self.playerClass = "Warrior"
         elif(choice == "healer"):
             self.attributes["toughness"] += 2
             self.attributes["mana"] += 20
+            self.playerClass = "Healer"
         else:
-            print("Invalid class") #TODO also add class name to stats
+            print("Invalid class")
+            self.chooseClass()
