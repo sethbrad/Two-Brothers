@@ -17,6 +17,7 @@ class Hero:
         "weapons": [],
         "armor": [],
         "spells": [],
+        "items": [],
         "gold": 0
     }
 
@@ -63,18 +64,22 @@ class Hero:
             self.attributes["evasiveness"] += 2
             self.attributes["stamina"] += 20
             self.playerClass = "Rogue"
+            self.inventory["spells"].append("poison")
         elif(choice == "mage"):
             self.attributes["mp"] += 2
             self.attributes["mana"] += 20
             self.playerClass = "Mage"
+            self.inventory["spells"].append("fireball")
         elif(choice == "warrior"):
             self.attributes["strength"] += 2
             self.attributes["hp"] += 20
             self.playerClass = "Warrior"
+            self.inventory["spells"].append("beserk")
         elif(choice == "healer"):
             self.attributes["toughness"] += 2
             self.attributes["mana"] += 20
             self.playerClass = "Healer"
+            self.inventory["spells"].append("cure")
         else:
             print("Invalid class")
             self.chooseClass()
