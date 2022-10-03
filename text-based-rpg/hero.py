@@ -1,5 +1,6 @@
-LEVELUP_XP_MULTIPLIER = 1.1
+import spells
 
+LEVELUP_XP_MULTIPLIER = 1.1
 
 class Hero:
     attributes = {
@@ -24,11 +25,13 @@ class Hero:
         "gold": 0
     }
 
-    def player_update(self):
-        if self.xp > self.next_level_xp:
-            self.xp = self.xp - self.next_level_xp
-            self.next_level_xp = 50 * (LEVELUP_XP_MULTIPLIER**(self.player_level - 1))
+    statuses = []
 
+    def playerUpdate(self):
+        if(self.XP > self.nextLevelXP):
+            self.XP = self.XP - self.nextLevelXP
+            self.nextLevelXP = 50*(1.1**(self.playerLevel-1))
+            
             print("You leveled up!")
             self.player_level += 1
             self.specialize()
@@ -65,23 +68,23 @@ class Hero:
         if choice == "rogue":
             self.attributes["evasiveness"] += 2
             self.attributes["stamina"] += 20
-            self.player_class = "Rogue"
-            self.inventory["spells"].append("poison")
-        elif choice == "mage":
+            self.playerClass = "Rogue"
+            self.inventory["spells"].append(spells.Poison())
+        elif(choice == "mage"):
             self.attributes["mp"] += 2
             self.attributes["mana"] += 20
-            self.player_class = "Mage"
-            self.inventory["spells"].append("fireball")
-        elif choice == "warrior":
+            self.playerClass = "Mage"
+            self.inventory["spells"].append(spells.Fireball())
+        elif(choice == "warrior"):
             self.attributes["strength"] += 2
             self.attributes["hp"] += 20
-            self.player_class = "Warrior"
-            self.inventory["spells"].append("beserk")
-        elif choice == "healer":
+            self.playerClass = "Warrior"
+            self.inventory["spells"].append(spells.Beserk())
+        elif(choice == "healer"):
             self.attributes["toughness"] += 2
             self.attributes["mana"] += 20
-            self.player_class = "Healer"
-            self.inventory["spells"].append("cure")
+            self.playerClass = "Healer"
+            self.inventory["spells"].append(spells.Cure())
         else:
             print("Invalid class")
             self.choose_class()
