@@ -2,22 +2,23 @@ class Wolf:
     name = "wolf"
     hp = 20
     strength = 3
-    droppedXP = 10
+    dropped_xp = 10
 
 
+# implement speed to start battle
 def combat_loop(enemy, player):  # add GOD MODE
     in_combat = True
 
     while in_combat:
-        print("The " + enemy.name + " attacks for " +
-              str(enemy.strength) + " damage!")
+        print(f'The {enemy.name} attacks for {str(enemy.strength)} damage!')
         player.attributes['hp'] -= enemy.strength
 
-        print("Player HP: " + str(player.attributes['hp']))
-        print("Enemy HP: " + str(enemy.hp))
+        # status printing
+        print(f'Player HP: {str(player.attributes["hp"])}')
+        print(f'Enemy HP: {str(enemy.hp)}')
         print()
         print("Choose an action: ")
-        action = input("[ATTACK] [INVENTORY] [MAGIC] [FLEE]")
+        action = input("[ATTACK] [INVENTORY] [MAGIC] [FLEE]\n")
         print()
 
         if action == "ATTACK":
@@ -53,5 +54,5 @@ def combat_loop(enemy, player):  # add GOD MODE
         elif enemy.hp <= 0:
             print("You won!")
             print()
-            player.XP += enemy.droppedXP
+            player.xp += enemy.dropped_xp
             in_combat = False

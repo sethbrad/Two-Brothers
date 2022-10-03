@@ -1,16 +1,19 @@
-import random
+import random as r
 import enemy
+
+
+AREA_TURNS = 5
 
 
 class Forest:
     def event(self, player):
-        turns = 5
+        turns = AREA_TURNS
         while turns > 0:
-            if random.random() < 0.2:
+            if r.random() < 0.2:
                 print("ENEMY ENCOUNTER")
                 wolf = enemy.Wolf()
                 enemy.combat_loop(wolf, player)
-                player.playerUpdate()
+                player.player_update()
             else:
                 print("You don't encounter anything.")
                 input("Continue exploring? (enter)")

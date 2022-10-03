@@ -1,3 +1,6 @@
+LEVELUP_XP_MULTIPLIER = 1.1
+
+
 class Hero:
     attributes = {
         "hp": 100,
@@ -24,7 +27,7 @@ class Hero:
     def player_update(self):
         if self.xp > self.next_level_xp:
             self.xp = self.xp - self.next_level_xp
-            self.next_level_xp = 50 * (1.1**(self.player_level - 1))
+            self.next_level_xp = 50 * (LEVELUP_XP_MULTIPLIER**(self.player_level - 1))
 
             print("You leveled up!")
             self.player_level += 1
