@@ -30,12 +30,15 @@ def combat_loop(enemy, player):  # add GOD MODE
             print(player.inventory["items"])
         elif action == "MAGIC":
             print("Available spells: ")
-            print(player.inventory["spells"])
+            for spell in player.inventory['spells']:
+                print(spell.get_name())
 
-            spell = input("Choose a spell: ")
-            if spell in player.inventory["spells"]:
-                print("You use " + spell + "!")
-                print()
+            chosen_spell = input("Choose a spell: ")
+            for spell in player.inventory['spells']:
+                if chosen_spell == spell.get_name():
+                    print(f'You use {spell.get_name()}!')
+                    print()
+                    break
             else:
                 print("Can't use that, fool")
                 print()

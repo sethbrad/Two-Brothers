@@ -1,33 +1,29 @@
-class Fireball:
+class Spell:
+    def get_name(self):
+        return self.name
+
+class Fireball(Spell):
     def __init__(self):
         self.name = "Fireball"
-    def getName(self):
-        return self.name
     def cast(self, player, enemy):
         enemy.hp -= player.attributes["mp"]
 
-class Poison:
+class Poison(Spell):
     def __init__(self):
         self.name = "Poison"
-    def getName(self):
-        return self.name
     def cast(self, player, enemy):
         enemy.statuses.append("poison")
         print(enemy.statuses)
 
-class Cure:
+class Cure(Spell):
     def __init__(self): 
         self.name = "Cure"
-    def getName(self):
-        return self.name
     def cast(self, player, enemy):
         player.hp += player.attributes["mp"]
 
-class Beserk:
+class Beserk(Spell):
     def __init__(self):
         self.name = "Beserk"
-    def getName(self):
-        return self.name
     def cast(self, player, enemy):
         pass
         # add beserk attribute to player

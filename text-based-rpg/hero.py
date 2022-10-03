@@ -27,10 +27,10 @@ class Hero:
 
     statuses = []
 
-    def playerUpdate(self):
-        if(self.XP > self.nextLevelXP):
-            self.XP = self.XP - self.nextLevelXP
-            self.nextLevelXP = 50*(1.1**(self.playerLevel-1))
+    def player_update(self):
+        if(self.XP > self.next_level_xp):
+            self.XP = self.XP - self.next_level_xp
+            self.next_level_xp = 50*(1.1**(self.player_level-1))
             
             print("You leveled up!")
             self.player_level += 1
@@ -68,12 +68,12 @@ class Hero:
         if choice == "rogue":
             self.attributes["evasiveness"] += 2
             self.attributes["stamina"] += 20
-            self.playerClass = "Rogue"
+            self.player_class = "Rogue"
             self.inventory["spells"].append(spells.Poison())
         elif(choice == "mage"):
             self.attributes["mp"] += 2
             self.attributes["mana"] += 20
-            self.playerClass = "Mage"
+            self.player_class = "Mage"
             self.inventory["spells"].append(spells.Fireball())
         elif(choice == "warrior"):
             self.attributes["strength"] += 2
@@ -83,7 +83,7 @@ class Hero:
         elif(choice == "healer"):
             self.attributes["toughness"] += 2
             self.attributes["mana"] += 20
-            self.playerClass = "Healer"
+            self.player_class = "Healer"
             self.inventory["spells"].append(spells.Cure())
         else:
             print("Invalid class")
