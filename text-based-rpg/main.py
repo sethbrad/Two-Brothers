@@ -16,7 +16,6 @@ def main():
 
     # Game loop
     while True:
-
         print("# # # # # # # #")
         cmd = input("NEW TURN --> Enter your next move: ")
         cmd_list = cmd.split()
@@ -24,7 +23,7 @@ def main():
         # Do stuff
         if cmd == "getStats":
             print(
-                f'You are a Level {str(player.player_level)} {player.player_class}')
+                f'You are a Level {player.player_level} {player.player_class}')
             print()
             print("Your current attributes: ")
             print(player.attributes)
@@ -48,7 +47,7 @@ def main():
             loc_x = player_scene.player_x
             loc_y = player_scene.player_y
             print(
-                f'You are in a {str(scene.world_map[loc_y][loc_x])}')
+                f'You are in a {scene.world_map[loc_y][loc_x]}')
 
         elif cmd == "rest":
             player.attributes['hp'] = 100
